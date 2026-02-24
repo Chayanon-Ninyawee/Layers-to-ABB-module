@@ -22,8 +22,8 @@ RAPID_FILE = "DrawImage.mod"
 # =========================
 # RAPID CONSTANTS
 # =========================
-ORIENT = "[0.00571424,-0.743896,0.66827,-0.00110946]"
-CONF = "[-1,-2,-1,1]"
+ORIENT = "[0,-0.7071068,-0.7071068,0]"
+CONF = "[0,0,-1,0]"
 EXTAX = "[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]"
 
 
@@ -190,6 +190,9 @@ with open(RAPID_FILE, "w") as f:
     f.write("MODULE DrawImage\n\n")
 
     f.write("  PROC draw_home(PERS wobjdata wobjDraw, PERS tooldata toolPen)\n")
+    f.write(
+        "    MoveAbsJ [[0,45,0,0,45,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v100, fine, toolPen;\n"
+    )
     f.write(
         f"    MoveL {robtarget(0,0,LIFT_Z)}, v100, fine, toolPen\\WObj:=wobjDraw;\n"
     )
